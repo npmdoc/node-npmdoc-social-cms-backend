@@ -1,0 +1,1622 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/dai-shi/social-cms-backend#readme">social-cms-backend (v0.7.2)</a>
+</h1>
+<h4>Express middleware to provide schema-less REST APIs for creating a social networking website primarily using angular.js. It comes with built-in authentication, authorization and notification features.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend">module social-cms-backend</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.middleware">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>middleware
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.route_objects">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>route_objects
+            <span class="apidocSignatureSpan">(object_type, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.socketIo">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>socketIo
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.socket_io">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>socket_io
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>authorizationManager</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>authorization_manager</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>mongodbManager</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>mongodb_manager</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>notificationManager</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">social-cms-backend.</span>notification_manager</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.authorization_manager">module social-cms-backend.authorization_manager</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.checkScope">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>checkScope
+            <span class="apidocSignatureSpan">(user_id, scope, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.getCurrentUserId">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getCurrentUserId
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.getCurrentUserObject">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getCurrentUserObject
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.getFollowers">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getFollowers
+            <span class="apidocSignatureSpan">(target_list, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.getScopeCriteria">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getScopeCriteria
+            <span class="apidocSignatureSpan">(user_id, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.hasPermission">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>hasPermission
+            <span class="apidocSignatureSpan">(user_id, permission, object_type, target, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.hasPermissionStandard">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>hasPermissionStandard
+            <span class="apidocSignatureSpan">(user_id, permission, object_type, target, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.authorization_manager.initialize">
+            function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.middleware">module social-cms-backend.middleware</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.middleware.middleware">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>middleware
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.middleware.parseJSONReviver">
+            function <span class="apidocSignatureSpan">social-cms-backend.middleware.</span>parseJSONReviver
+            <span class="apidocSignatureSpan">(key, value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.mongodb_manager">module social-cms-backend.mongodb_manager</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.mongodb_manager.createPrimaryKey">
+            function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>createPrimaryKey
+            <span class="apidocSignatureSpan">(collection_name, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.mongodb_manager.getBareCollection">
+            function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>getBareCollection
+            <span class="apidocSignatureSpan">(collection_name, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.mongodb_manager.getWrappedDb">
+            function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>getWrappedDb
+            <span class="apidocSignatureSpan">(current_user_id)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.mongodb_manager.initialize">
+            function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.notification_manager">module social-cms-backend.notification_manager</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.notification_manager.initialize">
+            function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.notification_manager.sendNotification">
+            function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>sendNotification
+            <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.notification_manager.sendNotificationStandard">
+            function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>sendNotificationStandard
+            <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.route_objects">module social-cms-backend.route_objects</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.route_objects.route_objects">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>route_objects
+            <span class="apidocSignatureSpan">(object_type, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.route_objects.parseJSONReviver">
+            function <span class="apidocSignatureSpan">social-cms-backend.route_objects.</span>parseJSONReviver
+            <span class="apidocSignatureSpan">(key, value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.social-cms-backend.socket_io">module social-cms-backend.socket_io</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.socket_io.socket_io">
+            function <span class="apidocSignatureSpan">social-cms-backend.</span>socket_io
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.social-cms-backend.socket_io.pushObject">
+            function <span class="apidocSignatureSpan">social-cms-backend.socket_io.</span>pushObject
+            <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend" id="apidoc.module.social-cms-backend">module social-cms-backend</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.middleware" id="apidoc.element.social-cms-backend.middleware">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>middleware
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function middleware(options) {
+  options = options || {};
+  convertCamelCaseOptions(options);
+
+  require('./mongodb_manager.js').initialize(options);
+  require('./authorization_manager.js').initialize(options);
+  require('./notification_manager.js').initialize(options);
+
+  //for sub middleware
+  var stack = [];
+
+  //emulate app.use
+  var use = function(fn) {
+    stack.push(fn);
+  };
+
+  //emulate app.handle
+  var handle = function(index, req, res, next) {
+    if (stack[index]) {
+      stack[index](req, res, function(err) {
+        if (err) return next(err);
+        handle(index + 1, req, res, next);
+      });
+    } else {
+      next();
+    }
+  };
+
+  //ensure required middleware is loaded
+  use(require('cookie-parser')());
+  use(require('body-parser')({
+    reviver: route_objects.parseJSONReviver
+  }));
+
+  use(options.session_middleware || require('express-session')({
+    secret: options.session_secret || 'this is a fallback session middlware secret'
+  }));
+
+  use(passport.initialize());
+  use(passport.session());
+
+  options.passport_strategy = options.passport_strategy || 'local';
+  if (options.passport_strategy === 'local') {
+    use(require('./authentication/auth_local.js')(options));
+  } else if (options.passport_strategy === 'facebook') {
+    use(require('./authentication/auth_facebook.js')(options));
+  } else if (options.passport_strategy === 'twitter') {
+    use(require('./authentication/auth_twitter.js')(options));
+  } else if (options.passport_strategy === 'digest') {
+    use(require('./authentication/auth_digest.js')(options));
+  } else {
+    //user-specified passport strategy middleware
+    use(options.passport_strategy);
+  }
+
+  use(function(req, res, next) {
+    req.emit('authenticated');
+    if (!req.notAuthenticated &amp;&amp; !res.headersSent) {
+      next();
+    }
+  });
+
+  options.routes = options.routes || [{
+    object_type: 'post',
+    object_prefix: '/posts'
+  }, {
+    object_type: 'user',
+    object_prefix: '/users'
+  }, {
+    object_type: 'group',
+    object_prefix: '/groups'
+  }, {
+    object_type: 'like',
+    object_prefix: '/likes'
+  }];
+
+  options.routes.forEach(function(route) {
+    var route_func = route_objects(route.object_type, options);
+    use(function(req, res, next) {
+      if (req.url.lastIndexOf(route.object_prefix, 0) === 0) {
+        req.url = req.url.substring(route.object_prefix.length);
+        route_func(req, res);
+      } else {
+        next();
+      }
+    });
+  });
+
+  return function(req, res, next) {
+    handle(0, req, res, next);
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+----------
+
+### Minimal configuration with local authentication
+
+    var express = require('express');
+    var SCB = require('social-cms-backend');
+    var app = express();
+    app.use(SCB.<span class="apidocCodeKeywordSpan">middleware</span>({
+      mongodb_url: 'mongodb://localhost:27017/socialcmsdb',
+      passport_strategy: 'local'
+    }));
+    app.listen(3000);
+
+### Typical configuration with Facebook authentication:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.route_objects" id="apidoc.element.social-cms-backend.route_objects">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>route_objects
+        <span class="apidocSignatureSpan">(object_type, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">route_objects = function (object_type, options) {
+  var rePathCount = new RegExp('^/count($|\\?)');
+  var rePathAggregate = new RegExp('^/aggregate($|\\?)');
+  var rePathInbox = new RegExp('^/inbox($|\\?)');
+  var rePathMyself = new RegExp('^/myself$');
+  var rePathId = new RegExp('^/(\\w+)$');
+  var rePathNone = new RegExp('^/?($|\\?)');
+
+  function handleGet(req, res) {
+    var current_user_id = authorization_manager.getCurrentUserId(req);
+    var handler;
+    var object_id;
+    if (options.breeze_mongo) {
+      var query = new breezeMongo.MongoQuery(req.query);
+      query.execute(mongodb_manager.getWrappedDb(current_user_id), object_type, function(err, results) {
+        if (err) {
+          res.status(403).send('unable to process breeze get query: ' + err);
+        } else {
+          res.setHeader('Content-Type', 'application/json');
+          res.send(results);
+        }
+      });
+    } else if (rePathCount.test(req.url)) {
+      parseJSON(req.query.query, function(err, parsedQuery) {
+        if (err) return res.status(400).send('unable to parse query: ' + err);
+        handler = new DefaultCountHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedQuery, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to count objects: ' + err);
+          } else {
+            res.json(result);
+          }
+        });
+        handler.run();
+      });
+    } else if (rePathAggregate.test(req.url)) {
+      parseJSON(req.query.pipeline, function(err, parsedPipeline) {
+        if (err) return res.status(400).send('unable to parse pipeline: ' + err);
+        handler = new DefaultAggregateHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedPipeline, function
+(err, result) {
+          if (err) {
+            res.status(403).send('unable to aggregate objects: ' + err);
+          } else {
+            res.json(result);
+          }
+        });
+        handler.run();
+      });
+    } else if (rePathInbox.test(req.url)) {
+      handler = new DefaultFindHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, {
+        'system.followers': current_user_id
+      }, null, req.query.skip, req.query.limit, function(err, result) {
+        if (err) {
+          res.status(403).send('unable to get inbox ' + err);
+        } else {
+          res.json(result);
+        }
+      });
+      handler.run();
+    } else if (rePathMyself.test(req.url)) {
+      if (current_user_id) {
+        object_id = current_user_id;
+        handler = new DefaultFindOneHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, object_id, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to get an object: ' + err);
+          } else if (result) {
+            res.json(result);
+          } else {
+            res.status(404).send('not found');
+          }
+        });
+        handler.run();
+      } else {
+        res.status(403).send('not logged in');
+      }
+    } else if (rePathNone.test(req.url)) {
+      parseJSON(req.query.query, function(err, parsedQuery) {
+        if (err) return res.status(400).send('unable to parse query: ' + err);
+        parseJSON(req.query.sort, function(err, parsedSort) {
+          if (err) return res.status(400).send('unable to parse sort: ' + err);
+          handler = new DefaultFindHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedQuery, parsedSort,
+req.query.skip, req.query.limit, function(err, result) {
+            if (err) {
+              res.status(403).send('unable to query objects: ' + err);
+            } else {
+              res.json(result);
+            }
+          });
+          handler.run();
+        });
+      });
+    } else {
+      var match = rePathId.exec(req.url);
+      if (match) {
+        object_id = match[1];
+        handler = new DefaultFindOneHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, object_id, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to get an object: ' + err);
+          } else if (result) {
+            res.json(result); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.socketIo" id="apidoc.element.social-cms-backend.socketIo">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>socketIo
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function socket_io(options) {
+  options = options || {};
+
+  //for sub middleware
+  var stack = [];
+
+  //emulate app.use
+  var use = function(fn) {
+    stack.push(fn);
+  };
+
+  //emulate app.handle
+  var handle = function(index, req, res, next) {
+    if (stack[index]) {
+      stack[index](req, res, function(err) {
+        if (err) return next(err);
+        handle(index + 1, req, res, next);
+      });
+    } else {
+      next();
+    }
+  };
+
+  use(require('cookie-parser')());
+
+  if (!options.session_middleware) {
+    throw new Error('options.session_middleware is not set');
+  }
+  use(options.session_middleware);
+
+  use(passport.initialize());
+  use(passport.session());
+
+  return function(socket, next) {
+    var req = socket.request;
+    var res = new http.ServerResponse(req); //dummy
+    req.originalUrl = req.originalUrl || req.url;
+    handle(0, req, res, function(err) {
+      if (err) return next(err);
+      if (!req.user) return next(new Error('no session for socket.io'));
+
+      var user_id = req.user;
+      socketMap[user_id] = socket;
+      socket.on('disconnect', function() {
+        delete socketMap[user_id];
+      });
+
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.socket_io" id="apidoc.element.social-cms-backend.socket_io">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>socket_io
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function socket_io(options) {
+  options = options || {};
+
+  //for sub middleware
+  var stack = [];
+
+  //emulate app.use
+  var use = function(fn) {
+    stack.push(fn);
+  };
+
+  //emulate app.handle
+  var handle = function(index, req, res, next) {
+    if (stack[index]) {
+      stack[index](req, res, function(err) {
+        if (err) return next(err);
+        handle(index + 1, req, res, next);
+      });
+    } else {
+      next();
+    }
+  };
+
+  use(require('cookie-parser')());
+
+  if (!options.session_middleware) {
+    throw new Error('options.session_middleware is not set');
+  }
+  use(options.session_middleware);
+
+  use(passport.initialize());
+  use(passport.session());
+
+  return function(socket, next) {
+    var req = socket.request;
+    var res = new http.ServerResponse(req); //dummy
+    req.originalUrl = req.originalUrl || req.url;
+    handle(0, req, res, function(err) {
+      if (err) return next(err);
+      if (!req.user) return next(new Error('no session for socket.io'));
+
+      var user_id = req.user;
+      socketMap[user_id] = socket;
+      socket.on('disconnect', function() {
+        delete socketMap[user_id];
+      });
+
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  passport_strategy: 'facebook',
+  facebook_app_id: process.env.FACEBOOK_APP_ID,
+  facebook_app_secret: process.env.FACEBOOK_APP_SECRET
+};
+app.use(SCB.middleware(SCB_options));
+var server = http.createServer(app);
+var sio = socket_io(server);
+sio.use(SCB.<span class="apidocCodeKeywordSpan">socket_io</span>(SCB_options));
+server.listen(3000);
+
+### Configuration for HTTP DIGEST strategy:
+
+var SCB_options = {
+  mongodb_url: 'mongodb://localhost:27017/socialcmsdb',
+  passport_strategy: 'digest',
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.authorization_manager" id="apidoc.module.social-cms-backend.authorization_manager">module social-cms-backend.authorization_manager</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.checkScope" id="apidoc.element.social-cms-backend.authorization_manager.checkScope">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>checkScope
+        <span class="apidocSignatureSpan">(user_id, scope, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function checkScope(user_id, scope, callback) {
+  if (!scope) return callback(null, true); //public scope
+
+  if (_.find(scope, function(x) {
+    return x &amp;&amp; x.user_id === user_id;
+  })) return callback(null, true); //user scope
+
+  getJoinedGroups(user_id, function(err, joined_groups) {
+    if (err) return callback(err);
+
+    if (_.some(joined_groups, function(group_id) {
+      return _.find(scope, function(x) {
+        return x &amp;&amp; x.group_id === group_id;
+      });
+    })) {
+      callback(null, true); //group scope
+    } else {
+      callback(null, false); //no scope
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.getCurrentUserId" id="apidoc.element.social-cms-backend.authorization_manager.getCurrentUserId">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getCurrentUserId
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getCurrentUserId(req) {
+  return req.user;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var rePathAggregate = new RegExp('^/aggregate($|\\?)');
+var rePathInbox = new RegExp('^/inbox($|\\?)');
+var rePathMyself = new RegExp('^/myself$');
+var rePathId = new RegExp('^/(\\w+)$');
+var rePathNone = new RegExp('^/?($|\\?)');
+
+function handleGet(req, res) {
+  var current_user_id = authorization_manager.<span class="apidocCodeKeywordSpan">getCurrentUserId</span>(req);
+  var handler;
+  var object_id;
+  if (options.breeze_mongo) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    query.execute(mongodb_manager.getWrappedDb(current_user_id), object_type, function(err, results) {
+      if (err) {
+        res.status(403).send('unable to process breeze get query: ' + err);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.getCurrentUserObject" id="apidoc.element.social-cms-backend.authorization_manager.getCurrentUserObject">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getCurrentUserObject
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getCurrentUserObject(req, callback) {
+  var current_user_id = getCurrentUserId(req);
+  mongodb_manager.getBareCollection('user', function(err, collection) {
+    if (err) return callback(err);
+
+    collection.findOne({
+      _id: current_user_id
+    }, callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.getFollowers" id="apidoc.element.social-cms-backend.authorization_manager.getFollowers">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getFollowers
+        <span class="apidocSignatureSpan">(target_list, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getFollowers(target_list, callback) {
+  if (!Array.isArray(target_list)) {
+    target_list = [target_list];
+  }
+  var followers = [];
+  var opts = {
+    fields: {
+      _id: true
+    }
+  };
+  async.each(target_list, function(target, cb) {
+    mongodb_manager.getBareCollection('user', function(err, collection) {
+      if (err) return callback(err);
+
+      if (always_follow_myself &amp;&amp; target.user_id) {
+        if (followers.indexOf(target.user_id) === -1) {
+          followers.push(target.user_id);
+        }
+      }
+
+      var query = _.object(_.map(_.pairs(target), function(x) {
+        return ['following.' + x[0], x[1]];
+      }));
+      collection.find(query, opts, function(err, cursor) {
+        if (err) return cb(err);
+
+        cursor.each(function(err, item) {
+          //ignore error
+          if (item) {
+            if (followers.indexOf(item._id) === -1) {
+              followers.push(item._id);
+            }
+          } else {
+            //end of cursor
+            cb();
+          }
+        });
+      });
+    });
+  },
+
+    function(err) {
+      if (err) return callback(err);
+
+      callback(null, followers);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.getScopeCriteria" id="apidoc.element.social-cms-backend.authorization_manager.getScopeCriteria">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>getScopeCriteria
+        <span class="apidocSignatureSpan">(user_id, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getScopeCriteria(user_id, callback) {
+  getJoinedGroups(user_id, function(err, joined_groups) {
+    if (err) return callback(err);
+
+    var criteria = [{
+      'scope': {
+        $exists: false
+      }
+    }, {
+      'scope.user_id': user_id
+    }];
+    joined_groups.forEach(function(group_id) {
+      criteria.push({
+        'scope.group_id': group_id
+      });
+    });
+    callback(null, criteria);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.hasPermission" id="apidoc.element.social-cms-backend.authorization_manager.hasPermission">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>hasPermission
+        <span class="apidocSignatureSpan">(user_id, permission, object_type, target, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hasPermission(user_id, permission, object_type, target, callback) {
+  if (typeof authorization_mode === 'function') return authorization_mode(user_id, permission, object_type, target, callback);
+  switch (authorization_mode) {
+    case 'standard':
+      hasPermissionStandard(user_id, permission, object_type, target, callback);
+      break;
+    default:
+      callback(null, false); //no permission at all
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.hasPermissionStandard" id="apidoc.element.social-cms-backend.authorization_manager.hasPermissionStandard">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>hasPermissionStandard
+        <span class="apidocSignatureSpan">(user_id, permission, object_type, target, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hasPermissionStandard(user_id, permission, object_type, target, callback) {
+  if (!user_id) return callback(null, false); //not logged in
+
+  if (permission === 'CREATE_OBJECT_TO_PUBLIC') {
+    callback(null, true);
+  } else if (permission.lastIndexOf('CREATE_OBJECT_TO_GROUP:', 0) === 0) {
+    var group_id = parseIntSafely(permission.substring('CREATE_OBJECT_TO_GROUP:'.length));
+    getJoinedGroups(user_id, function(err, joined_groups) {
+      if (err) return callback(err);
+      callback(null, joined_groups.indexOf(group_id) &gt;= 0);
+    });
+  } else if (permission.lastIndexOf('CREATE_OBJECT_TO_USER:', 0) === 0) {
+    var target_user_id = parseIntSafely(permission.substring('CREATE_OBJECT_TO_USER:'.length));
+    if (user_id === target_user_id) return callback(null, true);
+    isFriendEachOther(user_id, target_user_id, callback);
+  } else if (permission === 'DELETE_OBJECT' || permission === 'UPDATE_OBJECT') {
+    if (!target) return callback(null, false);
+    getOwner(object_type, target, function(err, owner) {
+      if (err) return callback(err);
+      callback(null, owner &amp;&amp; user_id === owner.user_id);
+    });
+  } else if (permission === 'VIEW_OBJECT' || permission === 'VIEW_OBJECTS' || permission === 'COUNT_OBJECTS' || permission === '
+AGGREGATE_OBJECTS') {
+    callback(null, true);
+  } else {
+    callback(null, false); //no permission
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.authorization_manager.initialize" id="apidoc.element.social-cms-backend.authorization_manager.initialize">
+        function <span class="apidocSignatureSpan">social-cms-backend.authorization_manager.</span>initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function initialize(options) {
+  authorization_mode = options.authorization_mode || 'standard';
+  always_follow_myself = options.always_follow_myself || false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.middleware" id="apidoc.module.social-cms-backend.middleware">module social-cms-backend.middleware</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.middleware.middleware" id="apidoc.element.social-cms-backend.middleware.middleware">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>middleware
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function middleware(options) {
+  options = options || {};
+  convertCamelCaseOptions(options);
+
+  require('./mongodb_manager.js').initialize(options);
+  require('./authorization_manager.js').initialize(options);
+  require('./notification_manager.js').initialize(options);
+
+  //for sub middleware
+  var stack = [];
+
+  //emulate app.use
+  var use = function(fn) {
+    stack.push(fn);
+  };
+
+  //emulate app.handle
+  var handle = function(index, req, res, next) {
+    if (stack[index]) {
+      stack[index](req, res, function(err) {
+        if (err) return next(err);
+        handle(index + 1, req, res, next);
+      });
+    } else {
+      next();
+    }
+  };
+
+  //ensure required middleware is loaded
+  use(require('cookie-parser')());
+  use(require('body-parser')({
+    reviver: route_objects.parseJSONReviver
+  }));
+
+  use(options.session_middleware || require('express-session')({
+    secret: options.session_secret || 'this is a fallback session middlware secret'
+  }));
+
+  use(passport.initialize());
+  use(passport.session());
+
+  options.passport_strategy = options.passport_strategy || 'local';
+  if (options.passport_strategy === 'local') {
+    use(require('./authentication/auth_local.js')(options));
+  } else if (options.passport_strategy === 'facebook') {
+    use(require('./authentication/auth_facebook.js')(options));
+  } else if (options.passport_strategy === 'twitter') {
+    use(require('./authentication/auth_twitter.js')(options));
+  } else if (options.passport_strategy === 'digest') {
+    use(require('./authentication/auth_digest.js')(options));
+  } else {
+    //user-specified passport strategy middleware
+    use(options.passport_strategy);
+  }
+
+  use(function(req, res, next) {
+    req.emit('authenticated');
+    if (!req.notAuthenticated &amp;&amp; !res.headersSent) {
+      next();
+    }
+  });
+
+  options.routes = options.routes || [{
+    object_type: 'post',
+    object_prefix: '/posts'
+  }, {
+    object_type: 'user',
+    object_prefix: '/users'
+  }, {
+    object_type: 'group',
+    object_prefix: '/groups'
+  }, {
+    object_type: 'like',
+    object_prefix: '/likes'
+  }];
+
+  options.routes.forEach(function(route) {
+    var route_func = route_objects(route.object_type, options);
+    use(function(req, res, next) {
+      if (req.url.lastIndexOf(route.object_prefix, 0) === 0) {
+        req.url = req.url.substring(route.object_prefix.length);
+        route_func(req, res);
+      } else {
+        next();
+      }
+    });
+  });
+
+  return function(req, res, next) {
+    handle(0, req, res, next);
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+----------
+
+### Minimal configuration with local authentication
+
+    var express = require('express');
+    var SCB = require('social-cms-backend');
+    var app = express();
+    app.use(SCB.<span class="apidocCodeKeywordSpan">middleware</span>({
+      mongodb_url: 'mongodb://localhost:27017/socialcmsdb',
+      passport_strategy: 'local'
+    }));
+    app.listen(3000);
+
+### Typical configuration with Facebook authentication:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.middleware.parseJSONReviver" id="apidoc.element.social-cms-backend.middleware.parseJSONReviver">
+        function <span class="apidocSignatureSpan">social-cms-backend.middleware.</span>parseJSONReviver
+        <span class="apidocSignatureSpan">(key, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseJSONReviver(key, value) {
+  if (typeof value === 'string') {
+    var match = /^\/Date\((\d+)\)\/$/.exec(value);
+    if (match) {
+      return new Date(parseInt(match[1], 10));
+    }
+    var reg_exp_match = /^\/RegExp\((.+)\)\/$/.exec(value);
+    if (reg_exp_match) {
+      return new RegExp(reg_exp_match[1]);
+    }
+  }
+  return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.mongodb_manager" id="apidoc.module.social-cms-backend.mongodb_manager">module social-cms-backend.mongodb_manager</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.mongodb_manager.createPrimaryKey" id="apidoc.element.social-cms-backend.mongodb_manager.createPrimaryKey">
+        function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>createPrimaryKey
+        <span class="apidocSignatureSpan">(collection_name, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createPrimaryKey(collection_name, callback) {
+  if (primary_key_map[collection_name]) return callback(null, ++primary_key_map[collection_name]);
+
+  getBareCollection(collection_name, function(err, collection) {
+    if (err) return callback(err);
+
+    collection.find({}, {
+      fields: {
+        _id: 1
+      }
+    }, function(err, cursor) {
+      if (err) return callback(err);
+
+      var max_id = 0;
+      cursor.each(function(err, item) {
+        //ignore err
+        if (item) {
+          if (typeof item._id === 'number' &amp;&amp; item._id &gt; max_id) {
+            max_id = item._id;
+          }
+        } else {
+          //end of cursor
+          if (primary_key_map[collection_name]) return callback(null, ++primary_key_map[collection_name]); //in case it's already
+ created by other calls.
+          primary_key_map[collection_name] = max_id + 1;
+          callback(null, max_id + 1);
+        }
+      });
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.mongodb_manager.getBareCollection" id="apidoc.element.social-cms-backend.mongodb_manager.getBareCollection">
+        function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>getBareCollection
+        <span class="apidocSignatureSpan">(collection_name, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getBareCollection(collection_name, callback) {
+  if (!mongodb_db) return callback(new Error('no mongodb connection'));
+
+  mongodb_db.collection(collection_name, function(err, collection) {
+    if (err) return callback(err);
+    callback(null, collection);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.mongodb_manager.getWrappedDb" id="apidoc.element.social-cms-backend.mongodb_manager.getWrappedDb">
+        function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>getWrappedDb
+        <span class="apidocSignatureSpan">(current_user_id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getWrappedDb(current_user_id) {
+  return {
+    collection: function(object_type, options, callback) {
+      if (arguments.length === 2) {
+        callback = options;
+        options = {};
+      }
+      getBareCollection(object_type, function(err, collection) {
+        if (err) return callback(err);
+        callback(null, getWrappedCollection(current_user_id, object_type, collection));
+      });
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  function handleGet(req, res) {
+var current_user_id = authorization_manager.getCurrentUserId(req);
+var handler;
+var object_id;
+if (options.breeze_mongo) {
+  var query = new breezeMongo.MongoQuery(req.query);
+  query.execute(mongodb_manager.<span class="apidocCodeKeywordSpan">getWrappedDb</span>(current_user_id), object_type, function(
+err, results) {
+    if (err) {
+      res.status(403).send('unable to process breeze get query: ' + err);
+    } else {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(results);
+    }
+  });
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.mongodb_manager.initialize" id="apidoc.element.social-cms-backend.mongodb_manager.initialize">
+        function <span class="apidocSignatureSpan">social-cms-backend.mongodb_manager.</span>initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function initialize(options) {
+  var mongodb_url = options.mongodb_url || 'mongodb://localhost:27017/socialcmsdb';
+  MongoClient.connect(mongodb_url, function(err, db) {
+    if (err) return console.log('Unable to connect to MongoDB: ' + mongodb_url);
+
+    console.log('Connected to MongoDB.');
+    mongodb_db = db;
+
+    var ensure_unique_index = options.ensure_unique_index;
+    if (ensure_unique_index) {
+      if (!Array.isArray(ensure_unique_index)) {
+        ensure_unique_index = [ensure_unique_index];
+      }
+      _.each(ensure_unique_index, function(x) {
+        if (x.object_type &amp;&amp; x.object_fields) {
+          ensureUniqueIndex(x.object_type, x.object_fields);
+        } else {
+          console.log('invalid ensure_unique_index option');
+        }
+      });
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.notification_manager" id="apidoc.module.social-cms-backend.notification_manager">module social-cms-backend.notification_manager</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.notification_manager.initialize" id="apidoc.element.social-cms-backend.notification_manager.initialize">
+        function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function initialize(options) {
+  notification_mode = options.notification_mode || 'standard';
+  facebook_app_id = options.facebook_app_id;
+  facebook_app_secret = options.facebook_app_secret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.notification_manager.sendNotification" id="apidoc.element.social-cms-backend.notification_manager.sendNotification">
+        function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>sendNotification
+        <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sendNotification(user_id, object_type, data) {
+  if (typeof notification_mode === 'function') return notification_mode(user_id, object_type, data);
+  switch (notification_mode) {
+    case 'standard':
+      sendNotificationStandard(user_id, object_type, data);
+      break;
+    default:
+      //do nothing
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.notification_manager.sendNotificationStandard" id="apidoc.element.social-cms-backend.notification_manager.sendNotificationStandard">
+        function <span class="apidocSignatureSpan">social-cms-backend.notification_manager.</span>sendNotificationStandard
+        <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sendNotificationStandard(user_id, object_type, data) {
+  mongodb_manager.getBareCollection('user', function(err, collection) {
+    if (err) return console.log('unable to get user collection');
+
+    var destination = (Array.isArray(data.destination) ? data.destination : [data.destination]);
+    if (_.find(destination, function(x) {
+      return x &amp;&amp; x.user_id === user_id;
+    })) {
+      collection.findOne({
+        _id: user_id
+      }, function(err, result) {
+        if (err) return console.log('unable to get user data');
+
+        if (result.system.facebook_user_id) {
+          var template = (typeof data.message === 'string' ? data.message.substring(0, 180) : 'You got a new data: ' + object_type
+);
+          sendFacebookAppNotification(result.system.facebook_user_id, '?ref=appnotification', template);
+        }
+      });
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.route_objects" id="apidoc.module.social-cms-backend.route_objects">module social-cms-backend.route_objects</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.route_objects.route_objects" id="apidoc.element.social-cms-backend.route_objects.route_objects">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>route_objects
+        <span class="apidocSignatureSpan">(object_type, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">route_objects = function (object_type, options) {
+  var rePathCount = new RegExp('^/count($|\\?)');
+  var rePathAggregate = new RegExp('^/aggregate($|\\?)');
+  var rePathInbox = new RegExp('^/inbox($|\\?)');
+  var rePathMyself = new RegExp('^/myself$');
+  var rePathId = new RegExp('^/(\\w+)$');
+  var rePathNone = new RegExp('^/?($|\\?)');
+
+  function handleGet(req, res) {
+    var current_user_id = authorization_manager.getCurrentUserId(req);
+    var handler;
+    var object_id;
+    if (options.breeze_mongo) {
+      var query = new breezeMongo.MongoQuery(req.query);
+      query.execute(mongodb_manager.getWrappedDb(current_user_id), object_type, function(err, results) {
+        if (err) {
+          res.status(403).send('unable to process breeze get query: ' + err);
+        } else {
+          res.setHeader('Content-Type', 'application/json');
+          res.send(results);
+        }
+      });
+    } else if (rePathCount.test(req.url)) {
+      parseJSON(req.query.query, function(err, parsedQuery) {
+        if (err) return res.status(400).send('unable to parse query: ' + err);
+        handler = new DefaultCountHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedQuery, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to count objects: ' + err);
+          } else {
+            res.json(result);
+          }
+        });
+        handler.run();
+      });
+    } else if (rePathAggregate.test(req.url)) {
+      parseJSON(req.query.pipeline, function(err, parsedPipeline) {
+        if (err) return res.status(400).send('unable to parse pipeline: ' + err);
+        handler = new DefaultAggregateHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedPipeline, function
+(err, result) {
+          if (err) {
+            res.status(403).send('unable to aggregate objects: ' + err);
+          } else {
+            res.json(result);
+          }
+        });
+        handler.run();
+      });
+    } else if (rePathInbox.test(req.url)) {
+      handler = new DefaultFindHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, {
+        'system.followers': current_user_id
+      }, null, req.query.skip, req.query.limit, function(err, result) {
+        if (err) {
+          res.status(403).send('unable to get inbox ' + err);
+        } else {
+          res.json(result);
+        }
+      });
+      handler.run();
+    } else if (rePathMyself.test(req.url)) {
+      if (current_user_id) {
+        object_id = current_user_id;
+        handler = new DefaultFindOneHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, object_id, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to get an object: ' + err);
+          } else if (result) {
+            res.json(result);
+          } else {
+            res.status(404).send('not found');
+          }
+        });
+        handler.run();
+      } else {
+        res.status(403).send('not logged in');
+      }
+    } else if (rePathNone.test(req.url)) {
+      parseJSON(req.query.query, function(err, parsedQuery) {
+        if (err) return res.status(400).send('unable to parse query: ' + err);
+        parseJSON(req.query.sort, function(err, parsedSort) {
+          if (err) return res.status(400).send('unable to parse sort: ' + err);
+          handler = new DefaultFindHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, parsedQuery, parsedSort,
+req.query.skip, req.query.limit, function(err, result) {
+            if (err) {
+              res.status(403).send('unable to query objects: ' + err);
+            } else {
+              res.json(result);
+            }
+          });
+          handler.run();
+        });
+      });
+    } else {
+      var match = rePathId.exec(req.url);
+      if (match) {
+        object_id = match[1];
+        handler = new DefaultFindOneHandler(mongodb_manager.getWrappedDb(current_user_id), object_type, object_id, function(err,
+result) {
+          if (err) {
+            res.status(403).send('unable to get an object: ' + err);
+          } else if (result) {
+            res.json(result); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.route_objects.parseJSONReviver" id="apidoc.element.social-cms-backend.route_objects.parseJSONReviver">
+        function <span class="apidocSignatureSpan">social-cms-backend.route_objects.</span>parseJSONReviver
+        <span class="apidocSignatureSpan">(key, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseJSONReviver(key, value) {
+  if (typeof value === 'string') {
+    var match = /^\/Date\((\d+)\)\/$/.exec(value);
+    if (match) {
+      return new Date(parseInt(match[1], 10));
+    }
+    var reg_exp_match = /^\/RegExp\((.+)\)\/$/.exec(value);
+    if (reg_exp_match) {
+      return new RegExp(reg_exp_match[1]);
+    }
+  }
+  return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.social-cms-backend.socket_io" id="apidoc.module.social-cms-backend.socket_io">module social-cms-backend.socket_io</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.socket_io.socket_io" id="apidoc.element.social-cms-backend.socket_io.socket_io">
+        function <span class="apidocSignatureSpan">social-cms-backend.</span>socket_io
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function socket_io(options) {
+  options = options || {};
+
+  //for sub middleware
+  var stack = [];
+
+  //emulate app.use
+  var use = function(fn) {
+    stack.push(fn);
+  };
+
+  //emulate app.handle
+  var handle = function(index, req, res, next) {
+    if (stack[index]) {
+      stack[index](req, res, function(err) {
+        if (err) return next(err);
+        handle(index + 1, req, res, next);
+      });
+    } else {
+      next();
+    }
+  };
+
+  use(require('cookie-parser')());
+
+  if (!options.session_middleware) {
+    throw new Error('options.session_middleware is not set');
+  }
+  use(options.session_middleware);
+
+  use(passport.initialize());
+  use(passport.session());
+
+  return function(socket, next) {
+    var req = socket.request;
+    var res = new http.ServerResponse(req); //dummy
+    req.originalUrl = req.originalUrl || req.url;
+    handle(0, req, res, function(err) {
+      if (err) return next(err);
+      if (!req.user) return next(new Error('no session for socket.io'));
+
+      var user_id = req.user;
+      socketMap[user_id] = socket;
+      socket.on('disconnect', function() {
+        delete socketMap[user_id];
+      });
+
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  passport_strategy: 'facebook',
+  facebook_app_id: process.env.FACEBOOK_APP_ID,
+  facebook_app_secret: process.env.FACEBOOK_APP_SECRET
+};
+app.use(SCB.middleware(SCB_options));
+var server = http.createServer(app);
+var sio = socket_io(server);
+sio.use(SCB.<span class="apidocCodeKeywordSpan">socket_io</span>(SCB_options));
+server.listen(3000);
+
+### Configuration for HTTP DIGEST strategy:
+
+var SCB_options = {
+  mongodb_url: 'mongodb://localhost:27017/socialcmsdb',
+  passport_strategy: 'digest',
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.social-cms-backend.socket_io.pushObject" id="apidoc.element.social-cms-backend.socket_io.pushObject">
+        function <span class="apidocSignatureSpan">social-cms-backend.socket_io.</span>pushObject
+        <span class="apidocSignatureSpan">(user_id, object_type, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function pushObject(user_id, object_type, data) {
+  var socket = socketMap[user_id];
+  if (socket) {
+    socket.emit('new-' + object_type, data);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
